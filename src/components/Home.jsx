@@ -48,7 +48,7 @@ function Home() {
         {/* FIRST COLUMN */}
         <div className="mt-8 grid grid-cols-1 justify-center gap-6 sm:grid-cols-2 lg:grid-cols-4">
           
-          {/* Product Card Container - MUST be 'group' and 'relative' */}
+          {/* Product Card Container  */}
           <div className="group relative  w-full bg-[#F4F5F7] overflow-hidden font-sans">
           
             {/*  Image Container */}
@@ -529,7 +529,7 @@ function Home() {
           </div>
 
           {/* RIGHT IMAGES SLIDER */}
-          <div className="w-[65%] flex items-center gap-6 overflow-hidden">
+          <div className="  flex items-center gap-6 overflow-hidden">
             
             {/* SLIDE 1 (ACTIVE / TALL) */}
             <div className="relative flex-shrink-0 w-[400px] h-[582px] overflow-hidden">
@@ -558,7 +558,7 @@ function Home() {
             </div>
 
             {/* SLIDE 2 & PAGINATION COLUMN */}
-            <div className="flex flex-col gap-10 flex-shrink-0 w-[372px]">
+            <div className="flex flex-col gap-10 flex-shrink-0 w-[372px] h-[583px]">
               {/* Image Box with Floating Right Chevron */}
               <div className="relative h-[486px] overflow-hidden">
                 <img 
@@ -567,7 +567,7 @@ function Home() {
                   className="w-full h-full object-cover" 
                 />
                 {/* White Floating Circle Arrow */}
-                <button className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-50 transition-colors">
+                <button className="absolute right-[0.2px] top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-50 transition-colors">
                   <ChevronRight className="w-6 h-6 text-[#B88E2F]" />
                 </button>
               </div>
