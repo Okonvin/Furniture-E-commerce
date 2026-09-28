@@ -1,16 +1,18 @@
-const images = [
-  "/assets/Image-sec4_1.png",
-  "/assets/Image-sec4_2.png",
-  "/assets/Image-sec4_3.png",
-  "/assets/Image-sec4_4.png",
-  "/assets/Image-sec4_5.png",
-  "/assets/Image-sec4_6.png",
-  "/assets/Image-sec4_7.png",
-  "/assets/Image-sec4_8.png",
-  "/assets/Image-sec4_9.png",
-];
+
 
 function Gallery() {
+
+  const images = [
+    "/assets/Image-sec4_1.png",
+    "/assets/Image-sec4_2.png",
+    "/assets/Image-sec4_3.png",
+    "/assets/Image-sec4_4.png",
+    "/assets/Image-sec4_5.png",
+    "/assets/Image-sec4_6.png",
+    "/assets/Image-sec4_7.png",
+    "/assets/Image-sec4_8.png",
+    "/assets/Image-sec4_9.png",
+  ];
   return (
     <section className="w-full overflow-hidden py-16">
       <p className="text-center text-[#616161] text-[20px] font-semibold">
@@ -28,7 +30,7 @@ function Gallery() {
                 key={src}
                 src={src}
                 alt=""
-                className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-cover flex-shrink-0"
+                className="w-40 h-40 sm:w-40 sm:h-96 md:w-40 md:h-40 object-cover"
                 />
             ))}
             </div>

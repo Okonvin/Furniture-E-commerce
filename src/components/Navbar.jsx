@@ -1,10 +1,10 @@
- 
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "./CartContext";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { itemCount } = useCart();
 
   const links = [
     { to: "/", label: "Home" },
@@ -34,7 +34,14 @@ function Navbar() {
             <img src="/assets/user_account-alert.svg" alt="Account" className="w-6 h-6 cursor-pointer" />
             <img src="/assets/akar-icons_search.svg" alt="Search" className="w-6 h-6 cursor-pointer" />
             <img src="/assets/akar-icons_heart.svg" alt="Wishlist" className="w-6 h-6 cursor-pointer" />
-            <img src="/assets/shopping-cart.svg" alt="Cart" className="w-6 h-6 cursor-pointer" />
+            <Link to="/cart" className="relative">
+              <img src="/assets/shopping-cart.svg" alt="Cart" className="w-6 h-6 cursor-pointer" />
+              {itemCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-[#B88E2F] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                  {itemCount}
+                </span>
+              )}
+            </Link>
           </div>
 
           {/* Hamburger button */}
@@ -65,7 +72,14 @@ function Navbar() {
               <img src="/assets/user_account-alert.svg" alt="Account" className="w-6 h-6" />
               <img src="/assets/akar-icons_search.svg" alt="Search" className="w-6 h-6" />
               <img src="/assets/akar-icons_heart.svg" alt="Wishlist" className="w-6 h-6" />
-              <img src="/assets/shopping-cart.svg" alt="Cart" className="w-6 h-6" />
+              <Link to="/cart" onClick={() => setIsOpen(false)} className="relative">
+                <img src="/assets/shopping-cart.svg" alt="Cart" className="w-6 h-6" />
+                {itemCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-[#B88E2F] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                    {itemCount}
+                  </span>
+                )}
+              </Link>
             </div>
           </div>
         )}
