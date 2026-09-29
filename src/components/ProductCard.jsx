@@ -2,16 +2,28 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Share2, Heart, ArrowRightLeft, Check } from "lucide-react";
 import { useCart } from "./CartContext";
+import { useCompare } from "./CompareContext";
 
-function ProductCard({ id, slug, image, badge, badgeColor, name, description, price, oldPrice }) {
+function ProductCard({ id, slug, image, badge, badgeColor, name, description, price, oldPrice, category }) {
   const { addToCart } = useCart();
+  const { addToCompare, removeFromCompare, isComparing } = useCompare();
   const [added, setAdded] = useState(false);
+  const comparing = isComparing(id);
 
   const handleAdd = (e) => {
     e.preventDefault(); // stop this button click from also triggering the <Link> below it
     addToCart({ id, slug, image, name, price }, 1);
     setAdded(true);
     setTimeout(() => setAdded(false), 1500);
+  };
+
+  const handleCompare = (e) => {
+    e.preventDefault();
+    if (comparing) {
+      removeFromCompare(id);
+    } else {
+      addToCompare({ id, slug, image, name, price, category });
+    }
   };
 
   return (
@@ -73,9 +85,14 @@ function ProductCard({ id, slug, image, badge, badgeColor, name, description, pr
             <Share2 className="w-4 h-4" />
             Share
           </button>
-          <button className="flex items-center gap-1 hover:text-[#B88E2F] transition-colors cursor-pointer">
+          <button
+            onClick={handleCompare}
+            className={`flex items-center gap-1 transition-colors cursor-pointer ${
+              comparing ? "text-[#B88E2F]" : "hover:text-[#B88E2F]"
+            }`}
+          >
             <ArrowRightLeft className="w-4 h-4" />
-            Compare
+            {comparing ? "Comparing" : "Compare"}
           </button>
           <button className="flex items-center gap-1 hover:text-[#B88E2F] transition-colors cursor-pointer">
             <Heart className="w-4 h-4" />

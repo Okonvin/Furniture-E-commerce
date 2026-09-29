@@ -11,6 +11,12 @@ export const baseProducts = [
   { image: "/assets/Image-sec2_6.png", badge: "New", badgeColor: "#2EC1AC", name: "Muggo", description: "Small mug", price: "Rp 150.000", category: "decor" },
   { image: "/assets/Image-sec2_7.png", badge: "-50%", badgeColor: "#E97171", name: "Pingky", description: "Cute bed set", price: "Rp 7.000.000", oldPrice: "Rp 14.000.000", category: "bedroom" },
   { image: "/assets/Image-sec2_8.png", badge: "New", badgeColor: "#2EC1AC", name: "Potty", description: "Minimalist flower pot", price: "Rp 500.000", category: "decor" },
+  { image: "/assets/product-img_1.png", name: "Muggo", description: "Small mug", price: "Rp 1.500.000", category: "decor" },
+  { image: "/assets/product-img_2.png", name: "Muggo", description: "Small mug", price: "Rp 1.500.000", category: "decor" },
+  { image: "/assets/product-img_3.png", name: "Casaliving Wood", description: "Stylish cafe chair", price: "Rp 270,000.00", category: "chair" },
+  { image: "/assets/product-img_4.png", name: "Muggo", description: "Small mug", price: "Rp 270,000.00", category: "decor" },
+  { image: "/assets/product-img_5.png", name: "Muggo", description: "Small mug", price: "Rp 100,000.00", category: "decor" },
+  { image: "/assets/product-img_6.png", name: "Asgaard sofa", description: "Small mug", price: "Rp 250,000.00", category: "decor" },
 ];
 
 // Placeholder: repeats the 8 base products to fill 32 items so the shop

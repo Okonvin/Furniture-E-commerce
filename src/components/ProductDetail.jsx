@@ -10,6 +10,7 @@ import {
 import { getProductBySlug, allProducts } from "./products";
 import ProductCard from "./ProductCard";
 import { useCart } from "./CartContext";
+import { useCompare } from "./CompareContext";
 
 // lucide-react doesn't ship brand/logo icons, so these are small inline SVGs.
 function FacebookIcon(props) {
@@ -98,6 +99,7 @@ function ProductDetail() {
   const product = getProductBySlug(slug);
 
   const { addToCart } = useCart();
+  const { addToCompare, removeFromCompare, isComparing } = useCompare();
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState(SIZE_OPTIONS[0]);
   const [selectedColor, setSelectedColor] = useState(COLOR_OPTIONS[0].name);
@@ -135,6 +137,7 @@ function ProductDetail() {
 
   const { id, image, name, description, price, oldPrice, badge, badgeColor, category } = product;
   const { avg, count } = ratingFor(id);
+  const comparing = isComparing(id);
 
   // Related products: same category first, then fill with others. Deduped.
   const candidates = [
@@ -159,6 +162,14 @@ function ProductDetail() {
     addToCart({ id, slug, image, name, price }, quantity);
     setAdded(true);
     setTimeout(() => setAdded(false), 1800);
+  };
+
+  const handleCompare = () => {
+    if (comparing) {
+      removeFromCompare(id);
+    } else {
+      addToCompare({ id, slug, image, name, price, category });
+    }
   };
 
   const sku = `SS${String(id).padStart(3, "0")}`;
@@ -202,11 +213,11 @@ function ProductDetail() {
           </div>
 
           {/* Main image */}
-          <div className="relative flex-1 aspect-square  overflow-hidden rounded-xl">
+          <div className="relative flex-1 aspect-square bg-[#F9F1E7] overflow-hidden rounded-xl">
             <img
               src={image}
               alt={name}
-              className="w-[600px] h-[500px] object-cover rounded-xl transition-transform duration-500 hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
             />
             {badge && (
               <span
@@ -236,7 +247,11 @@ function ProductDetail() {
             </span>
           </button>
 
-          <p className="text-[#898989] leading-relaxed">{description}.</p>
+          <p className="text-black text-[16px] font-medium leading-relaxed">
+            Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.
+
+
+          </p>
 
           {/* Size picker (placeholder - not tied to real inventory) */}
           <div className="flex flex-col gap-2">
@@ -315,9 +330,16 @@ function ProductDetail() {
               )}
             </button>
 
-            <button className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-[#3A3A3A] border border-[#3A3A3A] hover:bg-[#3A3A3A] hover:text-white transition-colors cursor-pointer">
+            <button
+              onClick={handleCompare}
+              className={`flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold border transition-colors cursor-pointer ${
+                comparing
+                  ? "bg-[#3A3A3A] text-white border-[#3A3A3A]"
+                  : "text-[#3A3A3A] border-[#3A3A3A] hover:bg-[#3A3A3A] hover:text-white"
+              }`}
+            >
               <Plus className="w-4 h-4" />
-              Compare
+              {comparing ? "Comparing" : "Compare"}
             </button>
           </div>
 

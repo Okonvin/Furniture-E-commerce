@@ -151,11 +151,11 @@ const features = [
   { icon: "/icons/cs.svg", title: "24 / 7 Support", desc: "Dedicated support" },
 ];
 
-function FeatureStrip() {
+export function FeatureStrip() {
   return (
     <section className="w-full bg-[#FAF3EA] py-12">
       <div className="w-[90%] lg:w-[80%] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        {features.map(({ icon: icon, title, desc }) => (
+        {features.map(({ icon, title, desc }) => (
           <div key={title} className="flex items-center justify-center lg:justify-start gap-4">
             <img src={icon} alt="" className="w-10 h-10 text-[#3A3A3A] flex-shrink-0" />
             <div>
