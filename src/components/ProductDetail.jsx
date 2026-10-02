@@ -7,7 +7,7 @@ import {
   Minus,
   Check,
 } from "lucide-react";
-import { getProductBySlug, allProducts } from "./products";
+import { getProductBySlug, allProducts, ratingFor } from "./products";
 import ProductCard from "./ProductCard";
 import { useCart } from "./CartContext";
 import { useCompare } from "./CompareContext";
@@ -33,14 +33,6 @@ function TwitterIcon(props) {
       <path d="M18.9 3H21.7l-6.1 7 7.18 9.9h-5.62l-4.4-5.8-5.04 5.8H2.9l6.53-7.5L2.6 3h5.76l3.98 5.3L18.9 3Zm-.98 15.2h1.56L7.16 4.7H5.49l12.43 13.5Z" />
     </svg>
   );
-}
-
-// Deterministic pseudo rating/review-count so each product looks different
-// but stays stable across renders (swap for real review data later).
-function ratingFor(id) {
-  const avg = Math.min(5, 3.6 + ((id * 7) % 14) / 10);
-  const count = 18 + ((id * 11) % 90);
-  return { avg: Math.round(avg * 10) / 10, count };
 }
 
 const sampleReviews = [
@@ -247,11 +239,7 @@ function ProductDetail() {
             </span>
           </button>
 
-          <p className="text-black text-[16px] font-medium leading-relaxed">
-            Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.
-
-
-          </p>
+          <p className="text-[#898989] leading-relaxed">{description}.</p>
 
           {/* Size picker (placeholder - not tied to real inventory) */}
           <div className="flex flex-col gap-2">

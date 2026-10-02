@@ -45,3 +45,12 @@ export function formatPrice(amount) {
 export function getProductBySlug(slug) {
   return allProducts.find((p) => p.slug === slug);
 }
+
+
+// Deterministic pseudo rating/review-count so each product looks different
+// but stays stable across renders (swap for real review data later).
+export function ratingFor(id){
+  const avg = Math.min(5, 3.6 + ((id * 7) % 14) / 10);
+  const count = 18 + ((id * 11) % 90);
+  return { avg: Math.round(avg * 10) / 10, count };
+}
