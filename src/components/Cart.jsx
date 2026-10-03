@@ -3,7 +3,8 @@ import { Trash2 } from "lucide-react";
 import { useCart } from "./CartContext";
 import { parsePrice, formatPrice } from "./products";
 import PageHero from "./PageHero";
-import { FeatureStrip } from "./Shop";
+import Reveal from "./Reveal";
+import { FeatureStrip } from "./shop";
 
 function Cart() {
   const { items, removeFromCart, updateQuantity, itemCount } = useCart();
@@ -18,14 +19,16 @@ function Cart() {
       <>
         <PageHero title="Cart" showLogo />
         <section className="w-[80%] mx-auto py-24 text-center">
-          <h1 className="text-3xl font-bold text-[#3A3A3A] mb-4">Your cart is empty</h1>
-          <p className="text-[#898989] mb-6">Looks like you haven't added anything yet.</p>
-          <Link
-            to="/shop"
-            className="inline-block bg-[#B88E2F] text-white px-8 py-3 font-semibold hover:bg-[#a07b28] transition-colors"
-          >
-            Browse Shop
-          </Link>
+          <Reveal>
+            <h1 className="text-3xl font-bold text-[#3A3A3A] mb-4">Your cart is empty</h1>
+            <p className="text-[#898989] mb-6">Looks like you haven't added anything yet.</p>
+            <Link
+              to="/shop"
+              className="inline-block bg-[#B88E2F] text-white px-8 py-3 font-semibold hover:bg-[#a07b28] transition-colors"
+            >
+              Browse Shop
+            </Link>
+          </Reveal>
         </section>
         <FeatureStrip/>
       </>
@@ -52,9 +55,10 @@ function Cart() {
             </div>
 
             <div className="flex flex-col divide-y divide-[#E4E4E4]">
-              {items.map((item) => (
-                <div
+              {items.map((item, i) => (
+                <Reveal
                   key={item.id}
+                  delay={i * 80}
                   className="grid grid-cols-1 lg:grid-cols-[100px_1fr_160px_140px_140px_40px] items-center gap-4 lg:gap-0 py-6"
                 >
                   {/* Image */}
@@ -97,13 +101,13 @@ function Cart() {
                   >
                     <Trash2 className="w-5 h-5" />
                   </button>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
 
           {/* ---------- Cart Totals ---------- */}
-          <div className="bg-[#F9F1E7] p-8 flex flex-col gap-6">
+          <Reveal delay={150} className="bg-[#F9F1E7] p-8 flex flex-col gap-6">
             <h2 className="text-xl font-bold text-[#3A3A3A] text-center">Cart Totals</h2>
 
             <div className="flex items-center justify-between border-b border-[#D9D9D9] pb-4">
@@ -119,7 +123,7 @@ function Cart() {
             <button className="mx-auto mt-2 px-10 py-3 rounded-full border border-[#3A3A3A] font-semibold text-[#3A3A3A] hover:bg-[#3A3A3A] hover:text-white transition-colors cursor-pointer">
               Check Out
             </button>
-          </div>
+          </Reveal>
 
         </div>
       </section>

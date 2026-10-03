@@ -1,24 +1,35 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import {ChevronRight,} from "lucide-react";
+import {
+  ChevronRight,
+  SlidersHorizontal,
+  LayoutGrid,
+  List,
+  Trophy,
+  ShieldCheck,
+  Truck,
+  Headphones,
+} from "lucide-react";
 import ProductCard from "./ProductCard";
 import { allProducts, categories, parsePrice } from "./products";
+import Reveal from "./Reveal";
 
-// ---------- Hero ----------
+
 function ShopHero() {
   return (
     <section className="w-full h-[286px] flex flex-col items-center justify-center gap-4 bg-[url('/assets/hero-banner.png')] bg-cover bg-center bg-no-repeat">
-      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#3A3A3A]">Shop</h1>
-      <div className="flex items-center gap-2 text-sm sm:text-base text-[#3A3A3A] font-medium">
-        <Link to="/" className="hover:text-[#B88E2F] transition-colors">Home</Link>
-        <ChevronRight className="w-4 h-4" />
-        <span className="text-[#3A3A3A]/70">Shop</span>
-      </div>
+      <Reveal className="flex flex-col items-center gap-4">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#3A3A3A]">Shop</h1>
+        <div className="flex items-center gap-2 text-sm sm:text-base text-[#3A3A3A] font-medium">
+          <Link to="/" className="hover:text-[#B88E2F] transition-colors">Home</Link>
+          <ChevronRight className="w-4 h-4" />
+          <span className="text-[#3A3A3A]/70">Shop</span>
+        </div>
+      </Reveal>
     </section>
   );
 }
 
-// ---------- Toolbar (filter toggle, grid/list, show, sort) ----------
 function ShopToolbar({
   view, setView, filterOpen, setFilterOpen,
   sortBy, setSortBy, itemsPerPage, setItemsPerPage,
@@ -26,14 +37,14 @@ function ShopToolbar({
 }) {
   return (
     <div className="w-full bg-[#F9F1E7] py-6">
-      <div className="w-[90%] lg:w-[73%] mx-auto flex flex-wrap items-center justify-between gap-4">
+      <Reveal className="w-[90%] lg:w-[73%] mx-auto flex flex-wrap items-center justify-between gap-4">
 
         <div className="flex items-center gap-4 sm:gap-6">
           <button
             onClick={() => setFilterOpen(!filterOpen)}
             className="flex items-center gap-2 text-sm sm:text-base font-medium cursor-pointer"
           >
-            <img src="/icons/filter.svg" alt="" className="w-7 h-7" />
+            <SlidersHorizontal className="w-5 h-5" />
             Filter
           </button>
 
@@ -42,14 +53,14 @@ function ShopToolbar({
             className={`p-1 cursor-pointer ${view === "grid" ? "text-[#B88E2F]" : "text-[#3A3A3A]"}`}
             aria-label="Grid view"
           >
-            <img src="/icons/grid-big.svg" alt="" className="w-7 h-7" />
+            <LayoutGrid className="w-5 h-5" />
           </button>
           <button
             onClick={() => setView("list")}
             className={`p-1 cursor-pointer ${view === "list" ? "text-[#B88E2F]" : "text-[#3A3A3A]"}`}
             aria-label="List view"
           >
-            <img src="/icons/view-list.svg" alt="" className="w-7 h-7" />
+            <List className="w-5 h-5" />
           </button>
 
           <span className="hidden sm:inline-block w-px h-6 bg-[#9F9F9F]"></span>
@@ -88,15 +99,14 @@ function ShopToolbar({
           </div>
         </div>
 
-      </div>
+      </Reveal>
     </div>
   );
 }
 
-// ---------- Filter panel (category checkboxes) ----------
 function FilterPanel({ selected, onToggle }) {
   return (
-    <div className="w-[90%] lg:w-[73%] mx-auto mt-4 p-4 bg-[#F9F1E7] flex flex-wrap gap-4">
+    <Reveal className="w-[90%] lg:w-[73%] mx-auto mt-4 p-4 bg-[#F9F1E7] flex flex-wrap gap-4">
       {categories.map((cat) => (
         <label key={cat} className="flex items-center gap-2 text-sm font-medium capitalize cursor-pointer">
           <input
@@ -108,11 +118,10 @@ function FilterPanel({ selected, onToggle }) {
           {cat}
         </label>
       ))}
-    </div>
+    </Reveal>
   );
 }
 
-// ---------- Pagination ----------
 function Pagination({ currentPage, totalPages, onPageChange }) {
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
@@ -143,33 +152,31 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
   );
 }
 
-// ---------- Feature strip ----------
 const features = [
-  { icon: "/icons/trophy.svg", title: "High Quality", desc: "crafted from top materials" },
-  { icon: "/icons/guarantee.svg", title: "Warranty Protection", desc: "Over 2 years" },
-  { icon: "/icons/shipping.svg", title: "Free Shipping", desc: "Order over 150 $" },
-  { icon: "/icons/cs.svg", title: "24 / 7 Support", desc: "Dedicated support" },
+  { icon: Trophy, title: "High Quality", desc: "crafted from top materials" },
+  { icon: ShieldCheck, title: "Warranty Protection", desc: "Over 2 years" },
+  { icon: Truck, title: "Free Shipping", desc: "Order over 150 $" },
+  { icon: Headphones, title: "24 / 7 Support", desc: "Dedicated support" },
 ];
 
 export function FeatureStrip() {
   return (
     <section className="w-full bg-[#FAF3EA] py-12">
       <div className="w-[90%] lg:w-[80%] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        {features.map(({ icon, title, desc }) => (
-          <div key={title} className="flex items-center justify-center lg:justify-start gap-4">
-            <img src={icon} alt="" className="w-10 h-10 text-[#3A3A3A] flex-shrink-0" />
+        {features.map(({ icon: Icon, title, desc }, i) => (
+          <Reveal key={title} delay={i * 100} className="flex items-center justify-center lg:justify-start gap-4">
+            <Icon className="w-10 h-10 text-[#3A3A3A] flex-shrink-0" strokeWidth={1.5} />
             <div>
               <h3 className="font-bold text-lg text-[#3A3A3A]">{title}</h3>
               <p className="text-[#3A3A3A]/70 text-sm">{desc}</p>
             </div>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>
   );
 }
 
-// ---------- Main Shop page ----------
 function Shop() {
   const [view, setView] = useState("grid");
   const [filterOpen, setFilterOpen] = useState(false);
@@ -237,8 +244,10 @@ function Shop() {
               : "grid grid-cols-1 gap-6"
           }
         >
-          {pageItems.map((product) => (
-            <ProductCard key={product.id} {...product} />
+          {pageItems.map((product, i) => (
+            <Reveal key={product.id} delay={i * 60}>
+              <ProductCard {...product} />
+            </Reveal>
           ))}
         </div>
 

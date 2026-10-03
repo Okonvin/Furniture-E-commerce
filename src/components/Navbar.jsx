@@ -17,7 +17,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="w-full">
+      <nav className="w-full  sticky top-0 z-30 bg-white">
         <div className="w-[90%] lg:w-[80%] flex justify-between items-center my-4 mx-auto px-2.5">
           <Link to="/">
             <img src="/assets/Frame_logo.svg" alt="logo" className="cursor-pointer h-8 sm:h-10" />

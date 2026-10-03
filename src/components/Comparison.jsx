@@ -5,6 +5,7 @@ import { useCompare } from "./CompareContext";
 import { useCart } from "./CartContext";
 import { allProducts, ratingFor } from "./products";
 import PageHero from "./PageHero";
+import { FeatureStrip } from "./shop";
 
 // Placeholder spec data - product catalog has no real spec sheet yet,
 // so these are generated deterministically per product (same approach as
@@ -111,7 +112,7 @@ function Comparison() {
 
   return (
     <>
-      <PageHero title="Comparison" />
+      <PageHero title="Comparison" showLogo />
 
       <section className="w-[90%] mx-auto py-14">
         {items.length === 0 ? (
@@ -246,6 +247,7 @@ function Comparison() {
           </div>
         )}
       </section>
+      <FeatureStrip/>
     </>
   );
 }

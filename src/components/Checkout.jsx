@@ -3,7 +3,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { useCart } from "./CartContext";
 import { parsePrice, formatPrice } from "./products";
 import PageHero from "./PageHero";
-import { FeatureStrip } from "./Shop"
+import Reveal from "./Reveal";
+import { FeatureStrip } from "./shop";
 
 const COUNTRIES = ["Sri Lanka", "India", "Indonesia", "Malaysia", "Singapore"];
 const PROVINCES = [
@@ -35,16 +36,18 @@ function Checkout() {
   if (items.length === 0) {
     return (
       <>
-        <PageHero title="Checkout" />
+        <PageHero title="Checkout" showLogo />
         <section className="w-[80%] mx-auto py-24 text-center">
-          <h1 className="text-2xl font-bold text-[#3A3A3A] mb-4">Your cart is empty</h1>
-          <p className="text-[#898989] mb-6">Add something to your cart before checking out.</p>
-          <Link
-            to="/shop"
-            className="inline-block bg-[#B88E2F] text-white px-8 py-3 font-semibold hover:bg-[#a07b28] transition-colors"
-          >
-            Browse Shop
-          </Link>
+          <Reveal>
+            <h1 className="text-2xl font-bold text-[#3A3A3A] mb-4">Your cart is empty</h1>
+            <p className="text-[#898989] mb-6">Add something to your cart before checking out.</p>
+            <Link
+              to="/shop"
+              className="inline-block bg-[#B88E2F] text-white px-8 py-3 font-semibold hover:bg-[#a07b28] transition-colors"
+            >
+              Browse Shop
+            </Link>
+          </Reveal>
         </section>
         <FeatureStrip/>
       </>
@@ -56,7 +59,7 @@ function Checkout() {
 
   return (
     <>
-      <PageHero title="Checkout" />
+      <PageHero title="Checkout" showLogo />
 
       <section className="w-[90%] lg:w-[80%] mx-auto py-14">
         <form
@@ -65,7 +68,7 @@ function Checkout() {
         >
 
           {/* ---------- Billing details ---------- */}
-          <div className="flex flex-col gap-6">
+          <Reveal className="flex flex-col gap-6">
             <h1 className="text-3xl font-bold text-[#3A3A3A] mb-2">Billing details</h1>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -132,10 +135,10 @@ function Checkout() {
               rows={3}
               className={`${inputClass} resize-none`}
             />
-          </div>
+          </Reveal>
 
           {/* ---------- Order summary + payment ---------- */}
-          <div className="flex flex-col gap-6">
+          <Reveal delay={150} className="flex flex-col gap-6">
 
             <div className="flex items-center justify-between font-bold text-[#3A3A3A] text-lg">
               <span>Product</span>
@@ -218,9 +221,9 @@ function Checkout() {
             >
               Place order
             </button>
-          </div>
+          </Reveal>
         </form>
-      </section>\
+      </section>
       <FeatureStrip/>
     </>
   );
