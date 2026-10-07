@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import { allProducts } from "./products";
 import Reveal from "./Reveal";
@@ -20,10 +21,12 @@ function OurProducts() {
             ))}
           </div>
 
-          <button className="py-3 px-16 border-[#B88E2F] border-1 text-[#B88E2F] text-[16px] font-semibold block my-5 mx-auto hover:text-[#ffff] hover:bg-[#B88E2F] transition-colors cursor-pointer">
+          <Link
+            to="/shop"
+            className="py-3 px-16 border-[#B88E2F] border-1 text-[#B88E2F] text-[16px] font-semibold block w-fit my-5 mx-auto hover:text-[#ffff] hover:bg-[#B88E2F] transition-colors cursor-pointer"
+          >
             Show More
-
-          </button>
+          </Link>
         </section>
       </Reveal>
   );

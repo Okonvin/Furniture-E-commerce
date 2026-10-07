@@ -1,6 +1,13 @@
+import { Link } from "react-router-dom";
 import Reveal from "./Reveal";
 
 function Footer(){
+    const links = [
+        {to: "/", label: "Home"},
+        {to: "/shop", label: "Shop"},
+        {to: "/about", label: "About"},
+        {to: "/contact", label: "Contact"},
+    ]
     return(
         <>
             <section className="w-full border-t border-[#9F9F9F] p-6 md:p-8">
@@ -15,10 +22,15 @@ function Footer(){
 
                     <Reveal delay={100} className="flex flex-col gap-4 md:gap-9">
                         <p className="text-[#9F9F9F] text-lg md:text-[20px] font-medium">Links</p>
-                        <p className="text-black text-lg md:text-[20px] font-medium">Home</p>
-                        <p className="text-black text-lg md:text-[20px] font-medium">Shop</p>
-                        <p className="text-black text-lg md:text-[20px] font-medium">About</p>
-                        <p className="text-black text-lg md:text-[20px] font-medium">Contact</p>
+                        {links.map((link) =>(
+                            <Link
+                                key={link.to}
+                                to={link.to}
+                                className="text-black text-lg md:text-[20px] font-medium hover:text-[#B88E2F] transition-colors w-fit"
+                            >
+                              {link.label}
+                            </Link>
+                        ))}
                     </Reveal>
 
                     <Reveal delay={200} className="flex flex-col gap-4 md:gap-9">

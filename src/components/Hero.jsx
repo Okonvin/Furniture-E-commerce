@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Reveal from "./Reveal";
 
 function Hero() {
@@ -13,9 +14,12 @@ function Hero() {
         <p className="mt-4 text-sm sm:text-base">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium facere dolorem cum adipisci, nihil similique fuga eum pariatur blanditiis magni.
         </p>
-        <button className="bg-[#B8912F] hover:bg-[#a07b28] text-white mt-6 font-bold px-6 sm:px-10 py-3 sm:py-4 cursor-pointer">
+        <Link
+          to="/shop"
+          className="inline-block bg-[#B8912F] hover:bg-[#a07b28] text-white mt-6 font-bold px-6 sm:px-10 py-3 sm:py-4 cursor-pointer"
+        >
           BUY NOW
-        </button>
+        </Link>
       </Reveal>
     </section>
   );

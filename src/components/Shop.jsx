@@ -1,15 +1,6 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import {
-  ChevronRight,
-  SlidersHorizontal,
-  LayoutGrid,
-  List,
-  Trophy,
-  ShieldCheck,
-  Truck,
-  Headphones,
-} from "lucide-react";
+import {  ChevronRight,  SlidersHorizontal,  LayoutGrid,  List, } from "lucide-react";
 import ProductCard from "./ProductCard";
 import { allProducts, categories, parsePrice } from "./products";
 import Reveal from "./Reveal";
@@ -153,19 +144,19 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
 }
 
 const features = [
-  { icon: Trophy, title: "High Quality", desc: "crafted from top materials" },
-  { icon: ShieldCheck, title: "Warranty Protection", desc: "Over 2 years" },
-  { icon: Truck, title: "Free Shipping", desc: "Order over 150 $" },
-  { icon: Headphones, title: "24 / 7 Support", desc: "Dedicated support" },
+  { icon: "/icons/trophy.svg", title: "High Quality", desc: "crafted from top materials" },
+  { icon: "/icons/guarantee.svg", title: "Warranty Protection", desc: "Over 2 years" },
+  { icon: "/icons/shipping.svg", title: "Free Shipping", desc: "Order over 150 $" },
+  { icon: "/icons/cs.svg", title: "24 / 7 Support", desc: "Dedicated support" },
 ];
 
 export function FeatureStrip() {
   return (
     <section className="w-full bg-[#FAF3EA] py-12">
       <div className="w-[90%] lg:w-[80%] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        {features.map(({ icon: Icon, title, desc }, i) => (
+        {features.map(({ icon, title, desc }, i) => (
           <Reveal key={title} delay={i * 100} className="flex items-center justify-center lg:justify-start gap-4">
-            <Icon className="w-10 h-10 text-[#3A3A3A] flex-shrink-0" strokeWidth={1.5} />
+             <img src={icon} alt="" className="w-10 h-10 flex-shrink-0"/>
             <div>
               <h3 className="font-bold text-lg text-[#3A3A3A]">{title}</h3>
               <p className="text-[#3A3A3A]/70 text-sm">{desc}</p>
