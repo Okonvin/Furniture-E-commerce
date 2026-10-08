@@ -4,7 +4,7 @@ import { useCart } from "./CartContext";
 import { parsePrice, formatPrice } from "./products";
 import PageHero from "./PageHero";
 import Reveal from "./Reveal";
-import { FeatureStrip } from "./shop";
+import { FeatureStrip } from "./Shop";
 
 const COUNTRIES = ["Sri Lanka", "India", "Indonesia", "Malaysia", "Singapore"];
 const PROVINCES = [

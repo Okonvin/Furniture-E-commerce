@@ -2,7 +2,7 @@ import { useState } from "react";
 import { MapPin, Phone, Clock } from "lucide-react";
 import Reveal from "./Reveal";
 import PageHero from "./PageHero";
-import { FeatureStrip } from "./shop";
+import { FeatureStrip } from "./Shop";
 
 function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });

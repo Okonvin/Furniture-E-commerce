@@ -4,11 +4,12 @@ import {  ChevronRight,  SlidersHorizontal,  LayoutGrid,  List, } from "lucide-r
 import ProductCard from "./ProductCard";
 import { allProducts, categories, parsePrice } from "./products";
 import Reveal from "./Reveal";
+import Pagination from "./Pagination";
 
 
 function ShopHero() {
   return (
-    <section className="w-full h-[286px] flex flex-col items-center justify-center gap-4 bg-[url('/assets/hero-banner.png')] bg-cover bg-center bg-no-repeat">
+    <section className="w-full h-[286px] flex flex-col items-center justify-center gap-4 bg-[url('/assets/shop-banner.png')] bg-cover bg-center bg-no-repeat">
       <Reveal className="flex flex-col items-center gap-4">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#3A3A3A]">Shop</h1>
         <div className="flex items-center gap-2 text-sm sm:text-base text-[#3A3A3A] font-medium">
@@ -110,36 +111,6 @@ function FilterPanel({ selected, onToggle }) {
         </label>
       ))}
     </Reveal>
-  );
-}
-
-function Pagination({ currentPage, totalPages, onPageChange }) {
-  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
-
-  return (
-    <div className="flex items-center justify-center gap-3 my-10">
-      {pages.map((page) => (
-        <button
-          key={page}
-          onClick={() => onPageChange(page)}
-          className={`w-12 h-12 flex items-center justify-center font-semibold transition-colors cursor-pointer ${
-            page === currentPage
-              ? "bg-[#B88E2F] text-white"
-              : "bg-[#F9F1E7] text-[#3A3A3A] hover:bg-[#B88E2F] hover:text-white"
-          }`}
-        >
-          {page}
-        </button>
-      ))}
-
-      <button
-        onClick={() => onPageChange(Math.min(currentPage + 1, totalPages))}
-        disabled={currentPage === totalPages}
-        className="px-6 h-12 flex items-center justify-center font-semibold bg-[#F9F1E7] text-[#3A3A3A] hover:bg-[#B88E2F] hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-      >
-        Next
-      </button>
-    </div>
   );
 }
 

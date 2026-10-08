@@ -1,13 +1,17 @@
 import Footer from "./components/Footer"
 import Home from "./components/Home"
+import Shop from "./components/Shop"
 import ProductDetail from "./components/ProductDetail"
 import Cart from "./components/Cart"
 import Checkout from "./components/Checkout"
 import Comparison from "./components/Comparison"
+import Contact from "./components/Contact"
+// import About from "./components/About"
+import BlogPost from "./components/BlogPost"
+import Blog from "./components/Blog"
 import Navbar from "./components/Navbar"
 import { Route, Routes } from "react-router-dom"
-import Contact from "./components/Contact"
-import Shop from "./components/shop"
+ 
 
 
 
@@ -23,6 +27,9 @@ function App (){
                 <Route path="/checkout" element={<Checkout/> }/>
                 <Route path="/comparison" element={<Comparison/> }/>
                 <Route path="/contact" element={<Contact/> }/>
+                {/* <Route path="/about" element={<About/> }/> */}
+                <Route path="/blog" element={<Blog/> }/>
+                <Route path="/blog/:slug" element={<BlogPost/> }/>
             </Routes> 
             <Footer/>      
         </>

@@ -121,9 +121,9 @@ function Cart() {
               <span className="text-[#B88E2F] font-bold text-lg">{formatPrice(subtotal)}</span>
             </div>
 
-            <button className="mx-auto mt-2 px-10 py-3 rounded-full border border-[#3A3A3A] font-semibold text-[#3A3A3A] hover:bg-[#3A3A3A] hover:text-white transition-colors cursor-pointer">
+            <Link to='/checkout' className="mx-auto mt-2 px-10 py-3 rounded-full border border-[#3A3A3A] font-semibold text-[#3A3A3A] hover:bg-[#3A3A3A] hover:text-white transition-colors cursor-pointer">
               Check Out
-            </button>
+            </Link>
           </Reveal>
 
         </div>
