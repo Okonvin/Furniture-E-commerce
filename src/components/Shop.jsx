@@ -5,20 +5,24 @@ import ProductCard from "./ProductCard";
 import { allProducts, categories, parsePrice } from "./products";
 import Reveal from "./Reveal";
 import Pagination from "./Pagination";
+import PageHero from "./PageHero";
 
 
 function ShopHero() {
   return (
-    <section className="w-full h-[286px] flex flex-col items-center justify-center gap-4 bg-[url('/assets/shop-banner.png')] bg-cover bg-center bg-no-repeat">
-      <Reveal className="flex flex-col items-center gap-4">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#3A3A3A]">Shop</h1>
-        <div className="flex items-center gap-2 text-sm sm:text-base text-[#3A3A3A] font-medium">
-          <Link to="/" className="hover:text-[#B88E2F] transition-colors">Home</Link>
-          <ChevronRight className="w-4 h-4" />
-          <span className="text-[#3A3A3A]/70">Shop</span>
-        </div>
-      </Reveal>
-    </section>
+    <>
+      <PageHero/>
+      <section className="w-full h-[286px] flex flex-col items-center justify-center gap-4 bg-[url('/assets/hero-banner.png')] bg-cover bg-center bg-no-repeat">
+        <Reveal className="flex flex-col items-center gap-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#3A3A3A]">Shop</h1>
+          <div className="flex items-center gap-2 text-sm sm:text-base text-[#3A3A3A] font-medium">
+            <Link to="/" className="hover:text-[#B88E2F] transition-colors">Home</Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="text-[#3A3A3A]/70">Shop</span>
+          </div>
+        </Reveal>
+      </section>
+    </>
   );
 }
 
